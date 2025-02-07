@@ -10,8 +10,8 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities
     {
         [DynamoDBHashKey("id")]
         public Guid Id { get; set; }
-        [DynamoDBProperty("idUsuario")]
-        public int IdUsuario { get; set; }
+        [DynamoDBProperty("email")]
+        public string Email { get; set; }
         [DynamoDBProperty("arquivoOrigem")]
         public string ArquivoOrigem { get; set; }
         [DynamoDBProperty("arquivoDestino")]

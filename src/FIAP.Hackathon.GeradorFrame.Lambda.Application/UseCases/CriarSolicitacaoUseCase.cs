@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.Models.Response;
+using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services;
+using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities.Enum;
@@ -13,27 +15,32 @@ using System.Threading.Tasks;
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 {
     public class CriarSolicitacaoUseCase(
-        ICriarUrlUploadS3UseCase criarUrlUploadS3,
+        IS3Service s3Service,
+        IJwtService jwtService,
         ISolicitacaoRepository solicitacaoRepository,
         IMapper mapper
         ) : ICriarSolicitacaoUseCase
     {
-        private readonly ICriarUrlUploadS3UseCase _criarUrlUploadS3 = criarUrlUploadS3;
+        private readonly IS3Service _s3Service = s3Service;
+        private readonly IJwtService _jwtService = jwtService;
         private readonly ISolicitacaoRepository _solicitacaoRepository = solicitacaoRepository;
         private readonly IMapper _mapper = mapper;
 
-        async Task<SolicitacaoResponse> IUseCaseAsync<SolicitacaoResponse>.Execute()
+        async Task<SolicitacaoResponse> IUseCaseAsync<string, SolicitacaoResponse>.Execute(string jwt)
         {
+            var email = _jwtService.GetEmail( jwt );
+
             var solicitacao = new Solicitacao()
             {
                 Id = Guid.NewGuid(),
+                Email = _jwtService.GetEmail(jwt),
                 DataCriacao = DateTime.Now,
-                StatusSolicitacao = StatusSolicitacao.Pendente
-            }; 
+                StatusSolicitacao = StatusSolicitacao.Pendente,
+            };
 
             var result = await _solicitacaoRepository.Post(solicitacao);
 
-            result.Url = await _criarUrlUploadS3.Execute(result.Id);
+            result.Url = await _s3Service.CreateUrlToUpload(result.Id);
 
             return _mapper.Map<SolicitacaoResponse>(result);
         }

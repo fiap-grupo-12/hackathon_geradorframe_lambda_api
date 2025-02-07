@@ -7,7 +7,7 @@ using FIAP.Hackathon.GeradorFrame.Lambda.Infra.Data.Repositories;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases;
 using Amazon.S3;
-using FIAP.Hackathon.GeradorFrame.Lambda.Infra.Services;
+using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services;
 
 namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Extensions
@@ -34,13 +34,12 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Extensions
             services.AddTransient<ISolicitacaoRepository, SolicitacaoRepository>();
 
             services.AddTransient<IS3Service, S3Service>();
+            services.AddTransient<IJwtService, JwtService>();
 
             //UseCase
             services.AddTransient<ICriarSolicitacaoUseCase, CriarSolicitacaoUseCase>();
             services.AddTransient<IObterSolicitacaoPorIdUseCase, ObterSolicitacaoPorIdUseCase>();
             services.AddTransient<IObterSolicitacaoUseCase, ObterSolicitacaoUseCase>();
-            services.AddTransient<ICriarUrlUploadS3UseCase, CriarUrlUploadS3UseCase>();
-            services.AddTransient<ICriarUrlDownloadS3UseCase, CriarUrlDownloadS3UseCase>();
         }
     }
 }

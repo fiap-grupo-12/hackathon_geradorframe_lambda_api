@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.Models.Response;
+using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Repositories;
 using System;
@@ -11,12 +12,12 @@ using System.Threading.Tasks;
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 {
     public class ObterSolicitacaoPorIdUseCase(
-        ICriarUrlDownloadS3UseCase criarUrlDownloadS3,
+        IS3Service s3Service,
         ISolicitacaoRepository solicitacaoRepository,
         IMapper mapper
         ) : IObterSolicitacaoPorIdUseCase
     {
-        private readonly ICriarUrlDownloadS3UseCase _criarUrlDownloadS3 = criarUrlDownloadS3;
+        private readonly IS3Service _s3Service = s3Service;
         private readonly ISolicitacaoRepository _solicitacaoRepository = solicitacaoRepository;
         private readonly IMapper _mapper = mapper;
 
@@ -27,7 +28,7 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
             {
                 var result = await _solicitacaoRepository.GetById(request);
 
-                result.Url = await _criarUrlDownloadS3.Execute(result.Id);
+                result.Url = await _s3Service.CreateUrlToDownload(result.Id);
 
                 return _mapper.Map<SolicitacaoResponse>(result);
             }

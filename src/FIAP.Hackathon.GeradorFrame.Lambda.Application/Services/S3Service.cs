@@ -1,10 +1,10 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
-using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services;
+using FIAP.Hackathon.GeradorFrame.Lambda.Application.Services.Interfaces;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities;
 using Microsoft.Extensions.Options;
 
-namespace FIAP.Hackathon.GeradorFrame.Lambda.Infra.Services
+namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Services
 {
     public class S3Service : IS3Service
     {

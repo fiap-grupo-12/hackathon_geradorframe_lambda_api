@@ -22,7 +22,7 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Controllers
         {
             try
             {
-                var result = await _criarSolicitacao.Execute();
+                var result = await _criarSolicitacao.Execute(Authorization);
 
                 return Ok(result);
             }

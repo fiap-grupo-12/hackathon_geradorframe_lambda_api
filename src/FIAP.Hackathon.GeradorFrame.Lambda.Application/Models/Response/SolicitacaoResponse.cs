@@ -6,8 +6,8 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Models.Response
     {
         [JsonPropertyName("id")]
         public Guid Id { get; set; }
-        [JsonPropertyName("idUsuario")]
-        public int IdUsuario { get; set; }
+        [JsonPropertyName("email")]
+        public string Email { get; set; }
         [JsonPropertyName("arquivoOrigem")]
         public string ArquivoOrigem { get; set; }
         [JsonPropertyName("arquivoDestino")]

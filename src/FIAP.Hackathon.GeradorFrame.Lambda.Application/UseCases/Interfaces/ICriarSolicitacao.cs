@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases.Interfaces
 {
-    public interface ICriarSolicitacaoUseCase:IUseCaseAsync<SolicitacaoResponse>
+    public interface ICriarSolicitacaoUseCase:IUseCaseAsync<string, SolicitacaoResponse>
     {
     }
 }

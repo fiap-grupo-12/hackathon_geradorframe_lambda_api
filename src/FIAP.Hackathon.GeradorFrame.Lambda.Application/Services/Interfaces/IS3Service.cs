@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Services
+namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Services.Interfaces
 {
     public interface IS3Service
     {

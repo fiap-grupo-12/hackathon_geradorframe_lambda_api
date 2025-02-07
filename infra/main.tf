@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "tfstate-grupo12-fiap-20251"
+    bucket = "tfstate-grupo12-fiap-2025"
     key    = "lambda_api/terraform.tfstate"
     region = "sa-east-1"
   }
@@ -71,6 +71,6 @@ resource "aws_lambda_function" "api_function" {
   timeout       = 30
   handler       = "FIAP.Hackathon.GeradorFrame.Lambda.API::FIAP.Hackathon.GeradorFrame.Lambda.API.LambdaEntryPoint::FunctionHandlerAsync"
   # Código armazenado no S3
-  s3_bucket = "code-lambdas-functions-matsui1"
+  s3_bucket = "code-lambdas-functions"
   s3_key    = "lambda_api_function.zip"
 }

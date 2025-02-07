@@ -84,7 +84,7 @@ jobs:
       - name: Verificando se bucket está criado
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
-          BUCKET_NAME="code-lambdas-functions"
+          BUCKET_NAME="hackathon-grupo12-fiap-code-bucket"
           REGION="sa-east-1"
 
           if ! aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
@@ -122,7 +122,7 @@ jobs:
         
     - name: Verificando se bucket está criado
       run: |
-            BUCKET_NAME="tfstate-grupo12-fiap-20251"
+            BUCKET_NAME="tfstate-grupo12-fiap-2025"
             REGION="sa-east-1"
 
             if ! aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then

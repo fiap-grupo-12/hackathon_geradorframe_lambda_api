@@ -71,6 +71,6 @@ resource "aws_lambda_function" "api_function" {
   timeout       = 30
   handler       = "FIAP.Hackathon.GeradorFrame.Lambda.API::FIAP.Hackathon.GeradorFrame.Lambda.API.LambdaEntryPoint::FunctionHandlerAsync"
   # Código armazenado no S3
-  s3_bucket = "code-lambdas-functions"
+  s3_bucket = "hackathon-grupo12-fiap-code-bucket"
   s3_key    = "lambda_api_function.zip"
 }

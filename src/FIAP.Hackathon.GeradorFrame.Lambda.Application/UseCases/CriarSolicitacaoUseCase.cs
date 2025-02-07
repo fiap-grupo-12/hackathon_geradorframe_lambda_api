@@ -13,10 +13,12 @@ using System.Threading.Tasks;
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 {
     public class CriarSolicitacaoUseCase(
+        ICriarUrlUploadS3UseCase criarUrlUploadS3,
         ISolicitacaoRepository solicitacaoRepository,
         IMapper mapper
         ) : ICriarSolicitacaoUseCase
     {
+        private readonly ICriarUrlUploadS3UseCase _criarUrlUploadS3 = criarUrlUploadS3;
         private readonly ISolicitacaoRepository _solicitacaoRepository = solicitacaoRepository;
         private readonly IMapper _mapper = mapper;
 
@@ -29,8 +31,9 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
                 StatusSolicitacao = StatusSolicitacao.Pendente
             }; 
 
-
             var result = await _solicitacaoRepository.Post(solicitacao);
+
+            result.Url = await _criarUrlUploadS3.Execute(result.Id);
 
             return _mapper.Map<SolicitacaoResponse>(result);
         }

@@ -11,19 +11,14 @@ using System.Threading.Tasks;
 
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 {
-    public class ObterSolicitacaoUseCase: IObterSolicitacaoUseCase
+    public class ObterSolicitacaoUseCase(
+        ISolicitacaoRepository solicitacaoRepository,
+        IMapper mapper
+        ) : IObterSolicitacaoUseCase
     {
-        private readonly ISolicitacaoRepository _solicitacaoRepository;
-        private readonly IMapper _mapper;
+        private readonly ISolicitacaoRepository _solicitacaoRepository = solicitacaoRepository;
+        private readonly IMapper _mapper = mapper;
 
-        public ObterSolicitacaoUseCase(
-            ISolicitacaoRepository solicitacaoRepository,
-            IMapper mapper
-            )
-        {
-            _solicitacaoRepository = solicitacaoRepository;
-            _mapper = mapper;
-        }
 
         public async Task<IList<SolicitacaoResponse>> Execute()
         {

@@ -10,19 +10,16 @@ using System.Threading.Tasks;
 
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 {
-    public class ObterSolicitacaoPorIdUseCase : IObterSolicitacaoPorIdUseCase
+    public class ObterSolicitacaoPorIdUseCase(
+        ICriarUrlDownloadS3UseCase criarUrlDownloadS3,
+        ISolicitacaoRepository solicitacaoRepository,
+        IMapper mapper
+        ) : IObterSolicitacaoPorIdUseCase
     {
-        private readonly ISolicitacaoRepository _solicitacaoRepository;
-        private readonly IMapper _mapper;
+        private readonly ICriarUrlDownloadS3UseCase _criarUrlDownloadS3 = criarUrlDownloadS3;
+        private readonly ISolicitacaoRepository _solicitacaoRepository = solicitacaoRepository;
+        private readonly IMapper _mapper = mapper;
 
-        public ObterSolicitacaoPorIdUseCase(
-            ISolicitacaoRepository solicitacaoRepository,
-            IMapper mapper
-            )
-        {
-            _solicitacaoRepository = solicitacaoRepository;
-            _mapper = mapper;
-        }
 
         public async Task<SolicitacaoResponse> Execute(Guid request)
         {
@@ -30,13 +27,15 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
             {
                 var result = await _solicitacaoRepository.GetById(request);
 
+                result.Url = await _criarUrlDownloadS3.Execute(result.Id);
+
                 return _mapper.Map<SolicitacaoResponse>(result);
             }
             catch (Exception e)
             {
                 throw new Exception($"Erro: Ex. {e.Message}");
             }
-            
+
         }
     }
 }

@@ -24,5 +24,6 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities
         public DateTime? DataFimProcessamento { get; set; }
         [DynamoDBProperty("statusSolicitacao")]
         public StatusSolicitacao StatusSolicitacao { get; set; }
+        public string Url { get; set; }
     }
 }

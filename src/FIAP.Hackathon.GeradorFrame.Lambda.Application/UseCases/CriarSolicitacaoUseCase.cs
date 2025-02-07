@@ -28,8 +28,6 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.UseCases
 
         async Task<SolicitacaoResponse> IUseCaseAsync<string, SolicitacaoResponse>.Execute(string jwt)
         {
-            var email = _jwtService.GetEmail( jwt );
-
             var solicitacao = new Solicitacao()
             {
                 Id = Guid.NewGuid(),

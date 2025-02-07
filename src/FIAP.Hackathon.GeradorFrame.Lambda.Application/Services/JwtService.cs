@@ -14,12 +14,13 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Services
         public string GetEmail(string jwtToken)
         {
             var handler = new JwtSecurityTokenHandler();
+
+            jwtToken = jwtToken.Replace("Bearer ", "");
             if (!handler.CanReadToken(jwtToken))
             {
                 return null;
             }
 
-            jwtToken = jwtToken.Replace("Bearer ", "");
             string email = string.Empty;
             var jsonToken = handler.ReadJwtToken(jwtToken);
             var payload = jsonToken.Payload;

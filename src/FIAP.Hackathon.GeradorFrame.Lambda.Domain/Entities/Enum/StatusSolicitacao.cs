@@ -13,9 +13,9 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities.Enum
         Pendente = 0,
 
         [Description("Em Processamento")]
-        Aprovado = 1,
+        EmProcessamento = 1,
 
         [Description("Processado")]
-        Recusado = 2
+        Processado = 2
     }
 }

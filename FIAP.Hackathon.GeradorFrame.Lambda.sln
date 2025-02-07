@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35521.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{367FC7C8-41CC-40C5-8B14-E2EC9AB6F834}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E5224431-F020-4BBC-8C04-08EE0B730B90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.Hackathon.GeradorFrame.Lambda.API", "src\FIAP.Hackathon.GeradorFrame.Lambda.API\FIAP.Hackathon.GeradorFrame.Lambda.API.csproj", "{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.Hackathon.GeradorFrame.Lambda.API.Tests", "tests\FIAP.Hackathon.GeradorFrame.Lambda.API.Tests\FIAP.Hackathon.GeradorFrame.Lambda.API.Tests.csproj", "{5FF54B33-3164-4F64-97AF-1D00F3890097}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.Hackathon.GeradorFrame.Lambda.Application", "src\FIAP.Hackathon.GeradorFrame.Lambda.Application\FIAP.Hackathon.GeradorFrame.Lambda.Application.csproj", "{4DADBDBC-4A62-4C6F-8581-2A0E6920F122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.Hackathon.GeradorFrame.Lambda.Domain", "src\FIAP.Hackathon.GeradorFrame.Lambda.Domain\FIAP.Hackathon.GeradorFrame.Lambda.Domain.csproj", "{E8BB2530-26DF-458D-83C2-BB03CE27CE73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FIAP.Hackathon.GeradorFrame.Lambda.Infra", "src\FIAP.Hackathon.GeradorFrame.Lambda.Infra\FIAP.Hackathon.GeradorFrame.Lambda.Infra.csproj", "{0FF5AF9C-5306-497D-AD55-2C0952B99D38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{414D7485-847F-4377-ABF2-6E0E43B6695F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{A2008AFF-3C91-4BF2-A8C5-5B17D51AAED1}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\destroy.yaml = .github\workflows\destroy.yaml
+		.github\workflows\workflow.yaml = .github\workflows\workflow.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{71E85BB6-2010-459A-A99A-3DB26EC1A097}"
+	ProjectSection(SolutionItems) = preProject
+		infra\main.tf = infra\main.tf
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF54B33-3164-4F64-97AF-1D00F3890097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF54B33-3164-4F64-97AF-1D00F3890097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF54B33-3164-4F64-97AF-1D00F3890097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF54B33-3164-4F64-97AF-1D00F3890097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DADBDBC-4A62-4C6F-8581-2A0E6920F122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DADBDBC-4A62-4C6F-8581-2A0E6920F122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DADBDBC-4A62-4C6F-8581-2A0E6920F122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DADBDBC-4A62-4C6F-8581-2A0E6920F122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BB2530-26DF-458D-83C2-BB03CE27CE73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BB2530-26DF-458D-83C2-BB03CE27CE73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BB2530-26DF-458D-83C2-BB03CE27CE73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BB2530-26DF-458D-83C2-BB03CE27CE73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF5AF9C-5306-497D-AD55-2C0952B99D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF5AF9C-5306-497D-AD55-2C0952B99D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF5AF9C-5306-497D-AD55-2C0952B99D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF5AF9C-5306-497D-AD55-2C0952B99D38}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5AD395D9-7967-494F-83B9-B1C2EBEE3CEB} = {367FC7C8-41CC-40C5-8B14-E2EC9AB6F834}
+		{5FF54B33-3164-4F64-97AF-1D00F3890097} = {E5224431-F020-4BBC-8C04-08EE0B730B90}
+		{4DADBDBC-4A62-4C6F-8581-2A0E6920F122} = {367FC7C8-41CC-40C5-8B14-E2EC9AB6F834}
+		{E8BB2530-26DF-458D-83C2-BB03CE27CE73} = {367FC7C8-41CC-40C5-8B14-E2EC9AB6F834}
+		{0FF5AF9C-5306-497D-AD55-2C0952B99D38} = {367FC7C8-41CC-40C5-8B14-E2EC9AB6F834}
+		{A2008AFF-3C91-4BF2-A8C5-5B17D51AAED1} = {414D7485-847F-4377-ABF2-6E0E43B6695F}
+		{71E85BB6-2010-459A-A99A-3DB26EC1A097} = {414D7485-847F-4377-ABF2-6E0E43B6695F}
+	EndGlobalSection
+EndGlobal

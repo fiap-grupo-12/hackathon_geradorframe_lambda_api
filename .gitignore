@@ -1,0 +1,15 @@
+/.vs
+/src/.vs/FIAP.Hackathon.GeradorFrame.Lambda/v17
+/src/FIAP.Hackathon.GeradorFrame.Lambda.API/bin
+/src/FIAP.Hackathon.GeradorFrame.Lambda.API/obj
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Application/bin
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Application/obj
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Domain/bin
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Domain/obj/Debug/net8.0
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Domain/obj/Release/net8.0
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Domain/obj
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Infra/bin
+/src/FIAP.Hackathon.GeradorFrame.Lambda.Infra/obj
+/tests/FIAP.Hackathon.GeradorFrame.Lambda.API.Tests/bin/Debug/net8.0
+/tests/FIAP.Hackathon.GeradorFrame.Lambda.API.Tests/obj
+/tests/FIAP.Hackathon.GeradorFrame.Lambda.API.Tests/bin/Release/net8.0

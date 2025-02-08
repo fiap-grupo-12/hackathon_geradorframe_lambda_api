@@ -8,12 +8,14 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Controllers
     public class SolicitacaoController(
             ICriarSolicitacaoUseCase criarSolicitacao,
             IObterSolicitacaoUseCase obterSolicitacao,
-            IObterSolicitacaoPorIdUseCase obterSolicitacaoPorId
+            IObterSolicitacaoPorIdUseCase obterSolicitacaoPorId,
+            IObterSolicitacaoPorEmail obterSolicitacaoPorEmail
         ) : ControllerBase
     {
         private readonly ICriarSolicitacaoUseCase _criarSolicitacao = criarSolicitacao;
         private readonly IObterSolicitacaoUseCase _obterSolicitacao = obterSolicitacao;
         private readonly IObterSolicitacaoPorIdUseCase _obterSolicitacaoPorId = obterSolicitacaoPorId;
+        private readonly IObterSolicitacaoPorEmail _obterSolicitacaoPorEmail = obterSolicitacaoPorEmail;
 
 
         // GET api/Solicitacao
@@ -33,12 +35,28 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Controllers
         }
 
         // GET api/Solicitacao/{id}
-        [HttpGet("Solicitacao/{Id}")]
+        [HttpGet("Solicitacao/Id/{Id}")]
         public async Task<IActionResult> GetSolicitacaoPorId(Guid id)
         {
             try
             {
                 var result = await _obterSolicitacaoPorId.Execute(id);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        // GET api/Solicitacao/{id}
+        [HttpGet("Solicitacao/Email/{Email}")]
+        public async Task<IActionResult> GetSolicitacaoPorEMail(string email)
+        {
+            try
+            {
+                var result = await _obterSolicitacaoPorEmail.Execute(email);
 
                 return Ok(result);
             }

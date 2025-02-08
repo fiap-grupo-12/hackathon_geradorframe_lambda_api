@@ -8,5 +8,6 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Domain.Repositories
         Task<Solicitacao> Post(Solicitacao solicitacao);
         Task<Solicitacao> GetById(Guid id);
         Task<IList<Solicitacao>> Get();
+        Task<IList<Solicitacao>> GetByEmail(string email);
     }
 }

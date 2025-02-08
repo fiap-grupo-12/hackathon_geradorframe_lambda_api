@@ -40,6 +40,7 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.API.Extensions
             services.AddTransient<ICriarSolicitacaoUseCase, CriarSolicitacaoUseCase>();
             services.AddTransient<IObterSolicitacaoPorIdUseCase, ObterSolicitacaoPorIdUseCase>();
             services.AddTransient<IObterSolicitacaoUseCase, ObterSolicitacaoUseCase>();
+            services.AddTransient<IObterSolicitacaoPorEmail, ObterSolicitacaoPorEmailUseCase>();
         }
     }
 }

@@ -11,12 +11,9 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Infra.Data.Configurations
         public MapperConfig()
         {
             //Response
-            CreateMap<Solicitacao, SolicitacaoResponse>()
+            CreateMap<SolicitacaoResponse, Solicitacao>().ReverseMap()
                 .ForMember(dest => dest.StatusSolicitacao, opt => opt.MapFrom(src => src.StatusSolicitacao.GetDescription()))
                 .ReverseMap();
-
-            //Response
-            CreateMap<SolicitacaoResponse, Solicitacao>().ReverseMap();
 
         }
     }

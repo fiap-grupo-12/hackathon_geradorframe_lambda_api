@@ -1,5 +1,7 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities;
+using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities.Enum;
 using FIAP.Hackathon.GeradorFrame.Lambda.Domain.Repositories;
 
 namespace FIAP.Hackathon.GeradorFrame.Lambda.Infra.Data.Repositories
@@ -48,6 +50,23 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Infra.Data.Repositories
             catch (Exception ex)
             {
                 throw new Exception($"Erro ao consultar solicitação - Id: {id}. Message: {ex}");
+            }
+        }
+
+        public async Task<IList<Solicitacao>> GetByEmail(string email)
+        {
+            try
+            {
+                var condition = new List<ScanCondition>()
+                {
+                    new ScanCondition("Email",ScanOperator.Equal, email)
+                };
+
+                return await _context.ScanAsync<Solicitacao>(condition).GetRemainingAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao consultar solicitações por e-mail. {ex}");
             }
         }
     }

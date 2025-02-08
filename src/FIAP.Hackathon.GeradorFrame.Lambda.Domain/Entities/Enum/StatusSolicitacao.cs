@@ -16,6 +16,9 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Domain.Entities.Enum
         EmProcessamento = 1,
 
         [Description("Processado")]
-        Processado = 2
+        Processado = 2,
+
+        [Description("Falha")]
+        Falha = 3
     }
 }

@@ -1,0 +1,1 @@
+https://gerador-de-frame-domain.auth.sa-east-1.amazoncognito.com/oauth2/authorize?response_type=code&client_id=4p3revjaeqbvhdf3hrka21lreu&redirect_uri=http://localhost

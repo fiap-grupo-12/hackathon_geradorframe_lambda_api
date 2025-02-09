@@ -36,7 +36,7 @@ namespace FIAP.Hackathon.GeradorFrame.Lambda.Application.Services
             var request = new GetPreSignedUrlRequest
             {
                 BucketName = _s3Settings.Download.Bucket,
-                Key = $"{id.ToString()}/{id.ToString()}{_s3Settings.Download.FileName}",
+                Key = $"{id.ToString()}",
                 Verb = HttpVerb.GET,
                 Expires = DateTime.UtcNow.AddHours(12),
             };

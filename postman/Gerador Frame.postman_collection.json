@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "9901e7c4-bf0e-4d7d-8a45-c1cf021b8798",
+		"name": "Gerador Frame",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15088391"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Access Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"token\", jsonData.id_token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Cookie",
+								"value": "XSRF-TOKEN=c37ed6cb-ee5d-4ab5-a19d-442e9a94e421",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{cognito_client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "b2265bbe-338f-4a53-81d3-69b648262fb5",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{cognito_url}}/oauth2/token",
+							"host": [
+								"{{cognito_url}}"
+							],
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Endpoints",
+			"item": [
+				{
+					"name": "Solicitacao",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"urlUpload\", jsonData.url);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJraWQiOiJKZVNVcmFhbFBcL2pzM2pWNmFCK0dKUjBBcWY0SjgwUERnakFtQjZ4cisyOD0iLCJhbGciOiJSUzI1NiJ9.eyJhdF9oYXNoIjoiLV9oVnBEM0xudzUwWU56dU5STlg4ZyIsInN1YiI6IjczYWNhYTJhLTgwZjEtNzBhYS1mZTA4LTZkZWM4YzFlNWMxMiIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuc2EtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3NhLWVhc3QtMV9uTDh2ZE9YcmkiLCJjb2duaXRvOnVzZXJuYW1lIjoiNzNhY2FhMmEtODBmMS03MGFhLWZlMDgtNmRlYzhjMWU1YzEyIiwib3JpZ2luX2p0aSI6IjEzYTliZjA4LTI3ZmMtNDdhZi05YTlkLTBjYzZhMWZkMjEwZSIsImF1ZCI6InJ1ZWltYjFpMjBnMzBzMTJqOWtxbmprMm0iLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTczODgwMTEwNiwiZXhwIjoxNzM4ODA0NzA2LCJpYXQiOjE3Mzg4MDExMDYsImp0aSI6IjVkYzljNDRiLTllYjctNGY2ZS1hNWIxLWUyMTE0YmYxZjEzNCIsImVtYWlsIjoibWF0c3VpLmFsZXhhbmRyZUBob3RtYWlsLmNvbSJ9.rntpbGxsq5M6EJqcqkvWyP5PVPUYjgi1Axj5N1_qwd9iFatGDCU9Uomfmsbhes-DWFQwjUjw6ST7TBBCiJS25Aa42MLFaRIGzu-II5hiYzzjf2fHPpB3U6lQMxRYnaTf7rlqvDsghPqIuE6OIxyUHJGwumtRjTSTBkUyupBMb9zFpLrgVq0TKfVSUS-jJMG-_52_i7739UYoWsIbHrOrUtXG5NHenM71dDKkaZz7-obmA77OuFaBqgI2crC1Bq4uhCL8XsdJprwnZN6Lh5JWG1zPvBY4N-1Sn0mLwtV5P9ij-vWkzFLwfdDEIhcCMGpaxB5vqo9eUzK6aOZUff2DVQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/Solicitacao",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"Solicitacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solicitacao/Id/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"urlDownload\", jsonData.url);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/Solicitacao/Id/cae5635e-a0c3-42c7-92b8-2dd7c47c772c",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"Solicitacao",
+								"Id",
+								"cae5635e-a0c3-42c7-92b8-2dd7c47c772c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solicitacao/Email/{email}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable(\"urlDownload\", jsonData.url);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/Solicitacao/Email/alexandre.matsui@hotmail.com",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"Solicitacao",
+								"Email",
+								"alexandre.matsui@hotmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Solicitacoes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/Solicitacoes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"Solicitacoes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "S3",
+			"item": [
+				{
+					"name": "Upload File",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "video.mp4"
+							}
+						},
+						"url": {
+							"raw": "{{urlUpload}}",
+							"host": [
+								"{{urlUpload}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download File",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{urlDownload}}",
+							"host": [
+								"{{urlDownload}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
